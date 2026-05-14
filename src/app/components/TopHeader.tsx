@@ -14,8 +14,8 @@ export default function TopHeader() {
                         </li>
                         <li>
                             <i className="far fa-phone-alt"></i>
-                            <a href="tel:+233 24 452 2879">
-                                +233 24 452 2879
+                            <a href="tel:+233244522879">
+                                +233 24 452 2879 / +233 540 765 641
                             </a>
                         </li>
                     </ul>
@@ -24,17 +24,6 @@ export default function TopHeader() {
                         <Image src="/assets/img/logo/black-logo-bottom.svg" alt="Bottom Logo" height={50} width={220} className="-ml-4 mt-2" />
                     </a>
                     <div className="head-right">
-                        <div className="flag-wrap">
-                            <div className="flag">
-                                <img src="/assets/img/flag.png" alt="flag" />
-                            </div>
-                            <select className="single-select w-100">
-                                <option>EN</option>
-                                <option>AU</option>
-                                <option>NZ</option>
-                            </select>
-                        </div>
-                        <div className="line-shape"></div>
                         <div className="social-icon">
                             <a href="#"><i className="fab fa-facebook-f"></i></a>
                             <a href="#"><i className="fab fa-twitter"></i></a>

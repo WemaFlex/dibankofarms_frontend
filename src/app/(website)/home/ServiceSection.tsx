@@ -70,7 +70,7 @@ export default function ServiceSection() {
                                 </div>
                                 <div className="col-lg-6 wow fadeInUp" data-wow-delay=".5s">
                                     <div className="service-image">
-                                        <img src="/assets/img/home-1/service/service-01.jpg" alt="img" />
+                                        <img style={{ width: 560, height: 390 }} src="/images/crop-farming.jpg" alt="img" />
                                     </div>
                                 </div>
                             </div>
@@ -95,7 +95,7 @@ export default function ServiceSection() {
                                 </div>
                                 <div className="col-lg-6">
                                     <div className="service-image">
-                                        <img src="/assets/img/home-1/service/service-01.jpg" alt="img" />
+                                        <img style={{ width: 560, height: 390 }} src="/images/live-stock.jpg" alt="img" />
                                     </div>
                                 </div>
                             </div>
@@ -120,7 +120,7 @@ export default function ServiceSection() {
                                 </div>
                                 <div className="col-lg-6">
                                     <div className="service-image">
-                                        <img src="/assets/img/home-1/service/service-01.jpg" alt="img" />
+                                        <img style={{ width: 560, height: 390 }} src="/images/animal-feed.png" alt="img" />
                                     </div>
                                 </div>
                             </div>
@@ -145,7 +145,7 @@ export default function ServiceSection() {
                                 </div>
                                 <div className="col-lg-6">
                                     <div className="service-image">
-                                        <img src="/assets/img/home-1/service/service-01.jpg" alt="img" />
+                                        <img src="/images/wholesale-and-bulk.png" alt="img" />
                                     </div>
                                 </div>
                             </div>

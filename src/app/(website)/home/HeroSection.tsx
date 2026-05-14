@@ -1,4 +1,28 @@
+"use client";
+
+import { useEffect } from "react";
+import Link from "next/link";
+
 export default function HeroSection() {
+
+    useEffect(() => {
+        // Initialize Swiper safely for Next.js production
+        if (typeof window !== "undefined" && window.Swiper) {
+            new window.Swiper('.banner-active', {
+                loop: true,
+                slidesPerView: 1,
+                effect: "fade",
+                autoplay: {
+                    delay: 6000,
+                    disableOnInteraction: false,
+                },
+                navigation: {
+                    nextEl: ".array-next",
+                    prevEl: ".array-prev",
+                },
+            });
+        }
+    }, []);
 
     return (
         <section className="hero-section hero-1 fix">
@@ -14,13 +38,13 @@ export default function HeroSection() {
                     </svg>
                 </button>
             </div>
+
             <div className="swiper banner-active">
                 <div className="swiper-wrapper">
 
-                    {/* SLIDE 1: CROPS */}
+                    {/* SLIDE 1: MAIN CLIENT BRIEF */}
                     <div className="swiper-slide">
                         <div className="hero-height">
-                            {/* Update this background image to a high-quality field/crop photo */}
                             <div className="hero-bg bg-cover" style={{ backgroundImage: "url('/assets/img/home-1/hero/hero-01.png')" }}></div>
                             <div className="container">
                                 <div className="row">
@@ -28,16 +52,22 @@ export default function HeroSection() {
                                         <div className="hero-content">
                                             <span>
                                                 <img src="/assets/img/home-1/hero/hero-title.svg" alt="img" />
-                                                Maize, Tomatoes, Soybeans & More
+                                                Welcome to Dibanko Salifu Farms
                                             </span>
-                                            <h1>Premium </h1>
-                                            <h2>Ghanaian Crops</h2>
+                                            <h1>Modern Agribusiness</h1>
+                                            <h2>in Ejura, Ghana</h2>
+                                            <p className="text-white mt-4 fs-5 mx-auto" style={{ maxWidth: "800px" }} >
+                                                Focused on sustainable crop production, premium livestock feed manufacturing, and innovative farming solutions for a growing nation.
+                                            </p>
                                         </div>
-                                        <div className="hero-button">
-                                            <a href="/shop" className="theme-btn">
-                                                Shop Fresh Produce
-                                                <i className="far fa-arrow-right"></i>
-                                            </a>
+                                        {/* Dual Buttons */}
+                                        <div className="hero-button d-flex flex-wrap gap-3 mt-4">
+                                            <Link href="/about-us" className="theme-btn">
+                                                Learn More <i className="far fa-arrow-right"></i>
+                                            </Link>
+                                            <Link href="/contact-us" className="theme-btn" style={{ backgroundColor: "var(--theme-color-2)", color: "var(--header)" }}>
+                                                Contact Us <i className="far fa-arrow-right"></i>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
@@ -45,10 +75,10 @@ export default function HeroSection() {
                         </div>
                     </div>
 
-                    {/* SLIDE 2: LIVESTOCK */}
+                    {/* SLIDE 2: FEED FOCUS (Using the same layout but highlighting feed) */}
                     <div className="swiper-slide">
                         <div className="hero-height">
-                            {/* Update this background image to a photo of healthy goats */}
+                            {/* Remember to update this bg image to feed bags or livestock */}
                             <div className="hero-bg bg-cover" style={{ backgroundImage: "url('/assets/img/home-1/hero/hero-01.png')" }}></div>
                             <div className="container">
                                 <div className="row">
@@ -56,56 +86,29 @@ export default function HeroSection() {
                                         <div className="hero-content">
                                             <span>
                                                 <img src="/assets/img/home-1/hero/hero-title.svg" alt="img" />
-                                                Healthy, Well-Bred Livestock
+                                                Dibanko Salifu Farms
                                             </span>
-                                            <h1>Quality</h1>
-                                            <h2>Farm-Raised Goats</h2>
+                                            <h1>Quality Livestock</h1>
+                                            <h2>Feed Manufacturing</h2>
+                                            <p className="text-white mt-4 fs-5 mx-auto" style={{ maxWidth: "800px" }}>
+                                                Scientifically formulated poultry, ruminant, rabbit, and pig feeds designed to maximize your herd's health and yield.
+                                            </p>
                                         </div>
-                                        <div className="hero-button">
-                                            <a href="/shop" className="theme-btn">
-                                                View Livestock
-                                                <i className="far fa-arrow-right"></i>
-                                            </a>
+                                        <div className="hero-button d-flex flex-wrap gap-3 mt-4">
+                                            <Link href="/shop" className="theme-btn">
+                                                View Our Feeds <i className="far fa-arrow-right"></i>
+                                            </Link>
+                                            <Link href="/contact-us" className="theme-btn" style={{ backgroundColor: "var(--theme-color-2)", color: "var(--header)" }}>
+                                                Contact Us <i className="far fa-arrow-right"></i>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    {/* SLIDE 3: ANIMAL FEED */}
-                    <div className="swiper-slide">
-                        <div className="hero-height">
-                            {/* Update this background image to a photo of feed bags or poultry/cattle eating */}
-                            <div className="hero-bg bg-cover" style={{ backgroundImage: "url('/assets/img/home-1/hero/hero-01.png')" }}></div>
-                            <div className="container">
-                                <div className="row">
-                                    <div className="col-lg-12">
-                                        <div className="hero-content">
-                                            <span>
-                                                <img src="/assets/img/home-1/hero/hero-title.svg" alt="img" />
-                                                Poultry, Cattle, Swine & Dairy
-                                            </span>
-                                            <h1>Fortified</h1>
-                                            <h2>Animal Feed</h2>
-                                            {/* Optional: You could add a small p tag here if your CSS supports it for the sizes */}
-                                            <p className="text-white mt-3 fw-bold">Available in 15kg and 25kg bags</p>
-                                        </div>
-                                        <div className="hero-button">
-                                            <a href="/shop" className="theme-btn">
-                                                Order Feed Now
-                                                <i className="far fa-arrow-right"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </section>
-
     );
 }

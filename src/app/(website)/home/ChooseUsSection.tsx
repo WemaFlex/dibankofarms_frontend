@@ -20,7 +20,6 @@ export default function ChooseUsSection() {
                                     <div className="ratting-image">
                                         <img src="/assets/img/home-1/choose/ratting-icon.png" alt="img" />
                                     </div>
-                                    {/* Startup Fix: Replaced "Award winning" with a focus on quality */}
                                     <h4>Premium Grade <br /> Farm Products</h4>
                                 </div>
                             </div>

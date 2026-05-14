@@ -43,8 +43,8 @@ export default function ContactUsOffCanvas() {
                                         </div>
                                         <div className="content">
                                             <p>Call Us</p>
-                                            {/* Updated Phone */}
                                             <h4><a href="tel:+233244522879">+233 24 452 2879</a></h4>
+                                            <h4><a href="tel:+233540765641">+233 540 765 641</a></h4>
                                         </div>
                                     </li>
                                     <li>

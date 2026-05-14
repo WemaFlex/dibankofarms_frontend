@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -50,24 +49,24 @@ export default function RootLayout({
 
       <body className="min-h-full flex flex-col">
         {children}
-        <Script strategy="afterInteractive" src="/assets/js/jquery-3.7.1.min.js" />
-        <Script strategy="afterInteractive" src="/assets/js/bootstrap.bundle.min.js" />
+        <script defer src="/assets/js/jquery-3.7.1.min.js" />
+        <script defer src="/assets/js/bootstrap.bundle.min.js" />
 
         {/* 2. PLUGINS: Load these AFTER React has painted the page */}
-        <Script strategy="afterInteractive" src="/assets/js/jquery.nice-select.min.js" />
-        <Script strategy="beforeInteractive" src="/assets/js/odometer.min.js" />
-        <Script strategy="afterInteractive" src="/assets/js/jquery.appear.min.js" />
-        <Script strategy="beforeInteractive" src="/assets/js/swiper-bundle.min.js" />
-        <Script strategy="afterInteractive" src="/assets/js/jquery.meanmenu.min.js" />
-        <Script strategy="afterInteractive" src="/assets/js/jquery.magnific-popup.min.js" />
-        <Script strategy="afterInteractive" src="/assets/js/wow.min.js" />
-        <Script strategy="afterInteractive" src="/assets/js/gsap.min.js" />
-        <Script strategy="afterInteractive" src="/assets/js/ScrollTrigger.min.js" />
-        <Script strategy="afterInteractive" src="/assets/js/SplitText.min.js" />
-        <Script strategy="afterInteractive" src="/assets/js/splitType.js" />
+        <script defer src="/assets/js/jquery.nice-select.min.js" />
+        <script defer src="/assets/js/odometer.min.js" />
+        <script defer src="/assets/js/jquery.appear.min.js" />
+        <script defer src="/assets/js/swiper-bundle.min.js" />
+        <script defer src="/assets/js/jquery.meanmenu.min.js" />
+        <script defer src="/assets/js/jquery.magnific-popup.min.js" />
+        <script defer src="/assets/js/wow.min.js" />
+        <script defer src="/assets/js/gsap.min.js" />
+        <script defer src="/assets/js/ScrollTrigger.min.js" />
+        <script defer src="/assets/js/SplitText.min.js" />
+        <script defer src="/assets/js/splitType.js" />
 
         {/* 3. YOUR MAIN LOGIC: Also must wait! */}
-        <Script strategy="afterInteractive" src="/assets/js/main.js" />
+        <script defer src="/assets/js/main.js" />
       </body>
     </html>
   );

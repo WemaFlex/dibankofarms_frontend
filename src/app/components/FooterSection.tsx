@@ -50,7 +50,8 @@ export default function FooterSection() {
                                         </div>
                                         <div className="content">
                                             <h5>Phone:</h5>
-                                            <p><a href="tel:++233244522879">+233 24 452 2879</a></p>
+                                            <p><a href="tel:+233244522879">+233 24 452 2879</a></p>
+                                            <p><a href="tel:+233540765641">+233 540 765 641</a></p>
                                         </div>
                                     </li>
                                 </ul>

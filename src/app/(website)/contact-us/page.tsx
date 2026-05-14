@@ -8,8 +8,8 @@ export default function ContactUsPage() {
         <>
             <BreadCrum slug="Contact Us" />
             <ContactDetailsSection />
-            <ContactFormSection />
             <ContactMapSection />
+            <ContactFormSection />
         </>
     )
 }

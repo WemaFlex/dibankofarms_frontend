@@ -1,149 +1,102 @@
+"use client";
+
+import { useEffect } from "react";
+import Link from "next/link";
 
 export default function ShopSection() {
+    // Initialize the Swiper slider specifically for the products
+    useEffect(() => {
+        if (typeof window !== "undefined" && window.Swiper) {
+            new window.Swiper('.product-slider', {
+                loop: true,
+                slidesPerView: 1, // 1 item on mobile
+                spaceBetween: 30, // Gap between cards
+                autoplay: {
+                    delay: 3500,
+                    disableOnInteraction: false,
+                },
+                breakpoints: {
+                    768: { slidesPerView: 2 },  // 2 items on tablets
+                    992: { slidesPerView: 3 },  // 3 items on small laptops
+                    1200: { slidesPerView: 4 }, // 4 items across on desktop (Matches your original layout!)
+                }
+            });
+        }
+    }, []);
+
+    const productsData = [
+        { id: 1, name: "Fresh Ginger", price: "Wholesale Pricing", image: "/assets/img/home-1/shop/shop-01.png", tag: "Fresh", tagColor: "sale-icon" },
+        { id: 2, name: "Livestock Feed Pellets", price: "Wholesale Pricing", image: "/assets/img/home-1/shop/shop-02.png", tag: "Top Seller", tagColor: "sale-icon" },
+        { id: 3, name: "Premium White Maize", price: "Wholesale Pricing", image: "/assets/img/home-1/shop/shop-03.png", tag: "", tagColor: "" },
+        { id: 4, name: "Fortified Poultry Feed", price: "Wholesale Pricing", image: "/assets/img/home-1/shop/shop-04.png", tag: "Sale", tagColor: "discount-icon" },
+        { id: 5, name: "Dried Ginger", price: "Wholesale Pricing", image: "/assets/img/home-1/shop/shop-01.png", tag: "", tagColor: "" },
+        { id: 6, name: "Cassava Products", price: "Wholesale Pricing", image: "/assets/img/home-1/shop/shop-02.png", tag: "", tagColor: "" },
+        { id: 7, name: "Ruminant Feed (Cattle)", price: "Wholesale Pricing", image: "/assets/img/home-1/shop/shop-03.png", tag: "", tagColor: "" },
+        { id: 8, name: "Rabbit Feed Pellets", price: "Wholesale Pricing", image: "/assets/img/home-1/shop/shop-04.png", tag: "", tagColor: "" },
+        { id: 9, name: "Pig Feed Formulations", price: "Wholesale Pricing", image: "/assets/img/home-1/shop/shop-01.png", tag: "", tagColor: "" }
+    ];
+
     return (
-        <section className="shop-section section-padding fix pt-0">
+        <section className="shop-section section-padding fix pt-0 mt-5">
             <div className="container">
-                <div className="section-title text-center">
+                <div className="section-title text-center mb-5">
                     <span className="wow fadeInUp"><img src="/assets/img/sub-title.svg" alt="img" />Direct From Ejura</span>
                     <h2 className="text-anim">Our Featured Farm Products</h2>
                 </div>
-                <div className="row">
 
-                    {/* PRODUCT 1: MAIZE */}
-                    <div className="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
-                        <div className="shop-box-items">
-                            <div className="shop-image">
-                                <img src="/assets/img/home-1/shop/shop-01.png" alt="Premium Maize" />
-                                <span className="sale-icon">Fresh</span>
-                                <ul className="shop-icon d-flex justify-content-center align-items-center">
-                                    <li>
-                                        <a href="/shop/cart">
-                                            <i className="far fa-shopping-cart"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/shop?q=maize"><i className="far fa-eye"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div className="content">
-                                <div className="star">
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i>
+                {/* SWIPER CONTAINER */}
+                <div className="swiper product-slider wow fadeInUp" data-wow-delay=".3s">
+                    <div className="swiper-wrapper">
+
+                        {/* Map through ALL 9 products inside the slider */}
+                        {productsData.map((product) => (
+                            <div className="swiper-slide" key={product.id}>
+
+                                {/* EXACT ORIGINAL CARD HTML - NO EXTRA HEIGHT */}
+                                <div className="shop-box-items">
+                                    <div className="shop-image">
+                                        <img src={product.image} alt={product.name} className="w-100" />
+
+                                        {/* Render tags only if they exist */}
+                                        {product.tag && <span className={product.tagColor}>{product.tag}</span>}
+
+                                        <ul className="shop-icon d-flex justify-content-center align-items-center">
+                                            <li>
+                                                <Link href="/contact">
+                                                    <i className="far fa-shopping-cart"></i>
+                                                </Link>
+                                            </li>
+                                            <li>
+                                                <Link href="/shop"><i className="far fa-eye"></i></Link>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div className="content">
+                                        <div className="star">
+                                            <i className="fas fa-star"></i>
+                                            <i className="fas fa-star"></i>
+                                            <i className="fas fa-star"></i>
+                                            <i className="fas fa-star"></i>
+                                            <i className="fas fa-star"></i>
+                                        </div>
+                                        <h5><Link href="/shop">{product.name}</Link></h5>
+                                        <ul>
+                                            <li>{product.price}</li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <h5><a href="/shop/maize">Premium White Maize</a></h5>
-                                <ul>
-                                    <li>GH¢ 350.00</li>
-                                    {/* Optional: Add a slashed out price if you want to show a discount */}
-                                    {/* <li><del>GH¢ 400.00</del></li> */}
-                                </ul>
+
                             </div>
-                        </div>
+                        ))}
+
                     </div>
+                </div>
 
-                    {/* PRODUCT 2: ANIMAL FEED */}
-                    <div className="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".4s">
-                        <div className="shop-box-items">
-                            <div className="shop-image">
-                                <img src="/assets/img/home-1/shop/shop-02.png" alt="Poultry Feed" />
-                                <span className="sale-icon">Top Seller</span>
-                                <ul className="shop-icon d-flex justify-content-center align-items-center">
-                                    <li>
-                                        <a href="/shop/cart">
-                                            <i className="far fa-shopping-cart"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/shop?q=feed"><i className="far fa-eye"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div className="content">
-                                <div className="star">
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i>
-                                </div>
-                                <h5><a href="/shop/feed">Fortified Poultry Feed (25kg)</a></h5>
-                                <ul>
-                                    <li>GH¢ 220.00</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* PRODUCT 3: LIVESTOCK (GOAT) */}
-                    <div className="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".6s">
-                        <div className="shop-box-items">
-                            <div className="shop-image">
-                                <img src="/assets/img/home-1/shop/shop-03.png" alt="Healthy Goat" />
-                                <ul className="shop-icon d-flex justify-content-center align-items-center">
-                                    <li>
-                                        <a href="/shop/cart">
-                                            <i className="far fa-shopping-cart"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/shop?q=livestock"><i className="far fa-eye"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div className="content">
-                                <div className="star">
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i>
-                                </div>
-                                <h5><a href="/shop/livestock">Healthy Farm-Raised Goat</a></h5>
-                                <ul>
-                                    <li>GH¢ 1,200.00</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* PRODUCT 4: SOYBEANS */}
-                    <div className="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".8s">
-                        <div className="shop-box-items">
-                            <div className="shop-image">
-                                <img src="/assets/img/home-1/shop/shop-04.png" alt="Fresh Soybeans" />
-                                <span className="sale-icon">Sale</span>
-                                <span className="discount-icon">10% Off</span>
-                                <ul className="shop-icon d-flex justify-content-center align-items-center">
-                                    <li>
-                                        <a href="/shop/cart">
-                                            <i className="far fa-shopping-cart"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/shop?q=soybeans"><i className="far fa-eye"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div className="content">
-                                <div className="star">
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i>
-                                </div>
-                                <h5><a href="/shop/soybeans">Fresh Farm Soybeans</a></h5>
-                                <ul>
-                                    <li>GH¢ 450.00</li>
-                                    <li>
-                                        <del>GH¢ 500.00</del>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                <div className="row mt-5">
+                    <div className="col-12 text-center wow fadeInUp" data-wow-delay=".4s">
+                        <Link href="/shop" className="theme-btn">
+                            View Full Catalog <i className="far fa-arrow-right"></i>
+                        </Link>
                     </div>
                 </div>
             </div>

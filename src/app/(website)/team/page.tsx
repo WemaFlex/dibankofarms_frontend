@@ -1,11 +1,14 @@
 import BreadCrum from "@/app/components/BreadCrum";
-import TeamMembersSection from "./TeamMembersSection";
+import OrganizationalStructure from "./OrgStructure";
 
 export default function FAQsPage() {
     return (
         <>
             <BreadCrum slug="Our Team" />
-            <TeamMembersSection />
+
+            <OrganizationalStructure />
+
+            {/* <TeamMembersSection /> */}
         </>
     )
 }

@@ -1,10 +1,10 @@
 import BreadCrum from "@/app/components/BreadCrum";
 import CounterSection from "../home/CountSection";
 import ShopSection from "../home/ShopSection";
-import TestimonialSection from "../home/TestimonialSection";
 import OurStorySection from "./OurStorySection";
-import GallerySection from "../home/GallerySection";
 import ChooseUsSection from "../home/ChooseUsSection";
+import OperationsAndStandards from "./OperationsAndStadards";
+import VideoGallery from "@/app/components/VideoGallery";
 
 export default function AboutUsPage() {
     return (
@@ -14,8 +14,10 @@ export default function AboutUsPage() {
             <CounterSection />
             <ChooseUsSection />
             <ShopSection />
-            <TestimonialSection />
-            <GallerySection />
+            {/* <TestimonialSection /> */}
+            <OperationsAndStandards />
+            {/* <GallerySection /> */}
+            <VideoGallery />
         </>
     )
 }

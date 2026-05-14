@@ -1,33 +1,35 @@
 import HeroSection from "./HeroSection";
-import FeatureSection from "./FeatureSection";
+import WhatWeDoSection from "./WhatWeDoSection";
 import AboutSection from "./AboutSection";
-import ServiceSection from "./ServiceSection";
 import ChooseUsSection from "./ChooseUsSection";
-import GallerySection from "./GallerySection";
 import CtaSection from "./CtaSection";
-import ShopSection from "./ShopSection";
+import ProductsSection from "./ShopSection";
 import ContactSection from "./ContactSection";
 import VideoSection from "./VideoSection";
-import TestimonialSection from "./TestimonialSection";
 import CounterSection from "./CountSection";
+import FarmInnovations from "./FarmInvations";
+import VideoGallery from "@/app/components/VideoGallery";
+import FeaturedProjectsSection from "./FeaturedProjects";
+import WhyChooseUsSection from "./WhyChooseUsSection";
 
 export default function Home() {
     return (
         <>
             <HeroSection />
-            <FeatureSection />
             <AboutSection />
-            <ServiceSection />
+            <WhatWeDoSection />
+            <FeaturedProjectsSection />
             <CounterSection />
-            <ChooseUsSection />
-            {/* <BrandSection /> */}
-            <GallerySection />
-            <CtaSection />
-            <ShopSection />
-            <VideoSection />
-            <TestimonialSection />
+            <ProductsSection />
+            <WhyChooseUsSection />
             <ContactSection />
-            {/* <NewsSection /> */}
+
+            {false && <><ChooseUsSection />
+                <VideoGallery />
+                <CtaSection />
+                <FarmInnovations />
+                <VideoSection />
+            </>}
         </>
     );
 }

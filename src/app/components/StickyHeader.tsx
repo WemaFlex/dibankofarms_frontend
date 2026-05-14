@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link"; // Next.js Link imported for instant routing
 
 export default function StickyHeader() {
     return (
@@ -7,35 +8,38 @@ export default function StickyHeader() {
                 <div className="mega-menu-wrapper">
                     <div className="header-main">
                         <form action="#" className="search-form">
-                            <a href="/home" className="top-logo flex items-center">
+                            {/* Updated to Link and routed to "/" */}
+                            <Link href="/" className="top-logo flex items-center">
                                 <Image src="/assets/img/logo/black-logo-top.svg" alt="Top Logo" height={50} width={100} />
-                                {/* <Image src="/assets/img/logo/black-logo-bottom.svg" alt="Bottom Logo" height={50} width={220} className="-ml-4 mt-2" /> */}
-                            </a>
+                            </Link>
                         </form>
 
-                        <a href="/home" className="header-logo">
+                        <Link href="/" className="header-logo">
                             <Image src="/assets/img/logo/black-logo.svg" alt="img" height={50} width={50} />
-                        </a>
+                        </Link>
 
                         <div className="mean__menu-wrapper">
                             <div className="main-menu">
                                 <nav id="mobile-menu">
                                     <ul>
-                                        <li><a href="/">Home</a></li>
-                                        <li><a href="/team">Our Team</a></li>
-                                        <li><a href="/shop">Shop</a></li>
-                                        <li><a href="/faqs">FAQs</a></li>
-                                        <li><a href="/contact-us">Contact Us</a></li>
-                                        <li><a href="/about-us">About Us</a></li>
+                                        <li><Link href="/">Home</Link></li>
+                                        <li><Link href="/about-us">About</Link></li>
+                                        <li><Link href="/farms">Farms</Link></li>
+                                        <li><Link href="/feed-production">Feed Production</Link></li>
+                                        <li><Link href="/shop">Products</Link></li>
+                                        <li><Link href="/projects">Projects</Link></li>
+                                        <li><Link href="/gallery">Gallery</Link></li>
+                                        <li><Link href="/contact-us">Contact</Link></li>
                                     </ul>
                                 </nav>
                             </div>
                         </div>
                         <div className="header-right d-flex justify-content-end align-items-center">
-                            <a href="/contact-us" className="theme-btn">
+                            {/* Updated Let's Talk button to match the new /contact route */}
+                            <Link href="/contact" className="theme-btn">
                                 Let&apos;s Talk
                                 <i className="far fa-arrow-right"></i>
-                            </a>
+                            </Link>
                             <div className="header__hamburger my-auto">
                                 <div className="sidebar__toggle">
                                     <div className="header-bar">

@@ -32,7 +32,8 @@ export default function CtaSection() {
                                         </div>
                                         <div className="content">
                                             <p>Call Us Directly:</p>
-                                            <a href="tel:+233540000000">+233 24 452 2879</a>
+                                            <a href="tel:+233540000000">+233 24 452 2879</a><br />
+                                            <a href="tel:+233540000000">+233 540 765 641</a>
                                         </div>
                                     </div>
                                 </div>

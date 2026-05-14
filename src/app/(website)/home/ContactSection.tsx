@@ -16,22 +16,17 @@ export default function ContactSection() {
                                 </div>
                                 <form action="#" id="contact-form" className="contact-form-box">
                                     <div className="row g-4 align-items-center justify-content-center">
-                                        <div className="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".2s">
-                                            <div className="form-clt">
-                                                <input type="text" placeholder="Enter email" />
-                                            </div>
-                                        </div>
-                                        <div className="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".4s">
+                                        <div className="col-lg-12 col-md-12 wow fadeInUp" data-wow-delay=".4s">
                                             <div className="form-clt">
                                                 <input type="text" placeholder="Enter name" />
                                             </div>
                                         </div>
-                                        <div className="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".6s">
+                                        <div className="col-lg-12 col-md-12 wow fadeInUp" data-wow-delay=".2s">
                                             <div className="form-clt">
-                                                <input type="text" placeholder="Your name" />
+                                                <input type="text" placeholder="Enter email" />
                                             </div>
                                         </div>
-                                        <div className="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".7s">
+                                        <div className="col-lg-12 col-md-12 wow fadeInUp" data-wow-delay=".7s">
                                             <div className="form-clt">
                                                 <input type="text" placeholder="Phone number" />
                                             </div>
@@ -60,7 +55,7 @@ export default function ContactSection() {
                         </div>
                         <div className="col-lg-6">
                             <div className="contact-image">
-                                <img src="/assets/img/home-1/contact-img-01.jpg" alt="img" />
+                                <img style={{ maxHeight: 939, maxWidth: 900 }} src="/images/crop-holding.jpg" alt="img" />
                             </div>
                         </div>
                     </div>
