@@ -1,7 +1,11 @@
-import React from 'react'
+import BreadCrum from "@/app/components/BreadCrum";
+import CommingSoon from "@/app/components/CommingSoon";
 
-export default function page() {
+export default function FeedProductionPage() {
   return (
-    <div>page</div>
+    <>
+      <BreadCrum slug="Feed Production" />
+      <CommingSoon />
+    </>
   )
 }

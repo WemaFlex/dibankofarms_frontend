@@ -1,10 +1,10 @@
 import BreadCrum from "@/app/components/BreadCrum";
 import CommingSoon from "@/app/components/CommingSoon";
 
-export default function ProjectsPage() {
+export default function GalleryPage() {
     return (
         <>
-            <BreadCrum slug="Projects" />
+            <BreadCrum slug="Gallery" />
             <CommingSoon />
         </>
     )
