@@ -8,7 +8,7 @@ export default function FooterSection() {
                         <img width={300} height={300} src="/assets/img/logo/white-logo.svg" alt="img" />
                     </a>
                     <div className="content-items wow fadeInUp" data-wow-delay=".2s">
-                        <h3>Subscribe Our Newsletter To Get More Updates</h3>
+                        <h3>Subscribe To Our Newsletter To Get More Updates</h3>
                         <form action="#">
                             <input type="text" placeholder="Your email" />
                             <button className="theme-btn" type="submit">

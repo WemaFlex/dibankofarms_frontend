@@ -32,7 +32,7 @@ export default function ShopSection() {
         { id: 5, name: "Dried Ginger", price: "Wholesale Pricing", image: "/images/dried-ginger-1.jpg", tag: "", tagColor: "" },
         { id: 6, name: "Cassava Products", price: "Wholesale Pricing", image: "/images/cassava-1.jpg", tag: "", tagColor: "" },
         { id: 7, name: "Ruminant Feed (Cattle)", price: "Wholesale Pricing", image: "/images/ruminant-feed-1.jpg", tag: "", tagColor: "" },
-        { id: 8, name: "Rabbit Feed", /**Pellets */ price: "Wholesale Pricing", image: "/images/rabit-feed-pallets.jpg", tag: "", tagColor: "" },
+        { id: 8, name: "Rabbit Feed", price: "Wholesale Pricing", image: "/images/rabit-feed-pallets.jpg", tag: "", tagColor: "" },
         { id: 9, name: "Pig Feed Formulations", price: "Wholesale Pricing", image: "/images/pig-feed-pallets.jpg", tag: "", tagColor: "" }
     ];
 
@@ -52,10 +52,16 @@ export default function ShopSection() {
                         {productsData.map((product) => (
                             <div className="swiper-slide" key={product.id}>
 
-                                {/* EXACT ORIGINAL CARD HTML - NO EXTRA HEIGHT */}
-                                <div className="shop-box-items">
+                                {/* Added h-100 to force uniform card heights */}
+                                <div className="shop-box-items h-100 d-flex flex-column">
                                     <div className="shop-image">
-                                        <img style={{ maxWidth: "199px", maxHeight: "187px" }} src={product.image} alt={product.name} className="w-100" />
+                                        {/* Applied fixed height and object-fit: cover */}
+                                        <img
+                                            style={{ height: "190px", objectFit: "cover", width: "100%" }}
+                                            src={product.image}
+                                            alt={product.name}
+                                            className="w-100"
+                                        />
 
                                         {/* Render tags only if they exist */}
                                         {product.tag && <span className={product.tagColor}>{product.tag}</span>}
@@ -71,16 +77,19 @@ export default function ShopSection() {
                                             </li>
                                         </ul>
                                     </div>
-                                    <div className="content">
-                                        <div className="star">
-                                            <i className="fas fa-star"></i>
-                                            <i className="fas fa-star"></i>
-                                            <i className="fas fa-star"></i>
-                                            <i className="fas fa-star"></i>
-                                            <i className="fas fa-star"></i>
+                                    {/* Added flex-grow-1 to push the bottom elements down evenly */}
+                                    <div className="content flex-grow-1 d-flex flex-column justify-content-between">
+                                        <div>
+                                            <div className="star">
+                                                <i className="fas fa-star"></i>
+                                                <i className="fas fa-star"></i>
+                                                <i className="fas fa-star"></i>
+                                                <i className="fas fa-star"></i>
+                                                <i className="fas fa-star"></i>
+                                            </div>
+                                            <h5><Link href="/shop">{product.name}</Link></h5>
                                         </div>
-                                        <h5><Link href="/shop">{product.name}</Link></h5>
-                                        <ul>
+                                        <ul className="mt-auto">
                                             <li>{product.price}</li>
                                         </ul>
                                     </div>

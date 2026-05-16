@@ -23,11 +23,11 @@ export default function StickyHeader() {
                                 <nav id="mobile-menu">
                                     <ul>
                                         <li><Link href="/">Home</Link></li>
-                                        <li><Link href="#whatwedo">Farms</Link></li>
                                         <li><Link href="#whatwedo">Feed Production</Link></li>
                                         <li><Link href="#products">Products</Link></li>
                                         <li><Link href="#projects">Projects</Link></li>
                                         <li><Link href="/gallery">Gallery</Link></li>
+                                        <li><Link href="/team">Team</Link></li>
                                         <li><Link href="/contact-us">Contact Us</Link></li>
                                         <li><Link href="/about-us">About</Link></li>
                                     </ul>
