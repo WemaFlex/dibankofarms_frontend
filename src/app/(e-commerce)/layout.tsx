@@ -1,10 +1,10 @@
-import FooterSection from "../components/FooterSection";
-import BackToTop from "../components/BackToTop";
-import ContactUsOffCanvas from "../components/ContactUsOffCanvas";
-import CustomMouseCursor from "../components/CustomMouseCursor";
+'use client'
 import StickyHeader from "../components/StickyHeader";
 import TopHeader from "../components/TopHeader";
 import BreadCrum from "../components/BreadCrum";
+import { FloatButton } from "antd";
+import { ArrowUpOutlined } from "@ant-design/icons";
+import Footer from "../components/Footer";
 
 export default function RootLayout({
   children,
@@ -13,15 +13,18 @@ export default function RootLayout({
 }>) {
   return (
     <>
-      {/* <PreLoader /> */}
-      <BackToTop />
-      <CustomMouseCursor />
-      <ContactUsOffCanvas />
+      <FloatButton.BackTop
+        duration={400}
+        type="primary"
+        shape="square"
+        icon={<ArrowUpOutlined />}
+        style={{ right: 30, bottom: 30 }}
+      />
       <TopHeader />
       <StickyHeader />
-      <BreadCrum slug="Products" />
+      <BreadCrum slug="Shop" />
       {children}
-      <FooterSection />
+      <Footer />
     </>
   );
 }

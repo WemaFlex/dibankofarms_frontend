@@ -1,65 +1,145 @@
+"use client";
 
-export default function ProductCard({ product, delay = ".3s" }: { product: any; delay?: string }) {
-    // We destructure the product object to keep the code clean
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { FaStar, FaShoppingCart, FaEye } from "react-icons/fa";
+
+interface ProductCardProps {
+    product: {
+        id: string | number;
+        title: string;
+        image: string;
+        price: number;
+        originalPrice?: number;
+        discount?: string;
+        badge?: string;
+        rating?: number;
+    };
+    index: number;
+}
+
+export default function ProductCard({ product, index }: ProductCardProps) {
     const {
         id,
         title,
         image,
         price,
-        originalPrice, // Optional
-        discount,      // Optional
-        badge,         // Optional (e.g., "Sale", "Fresh")
-        rating = 5     // Defaults to 5 if not provided
+        originalPrice,
+        discount,
+        badge,
+        rating = 5
     } = product;
 
+    // Grid entrance animation variants matching the homepage design language
+    const cardVariants = {
+        hidden: { opacity: 0, y: 35 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                delay: (index % 3) * 0.12,
+                duration: 0.6,
+                ease: [0.22, 1, 0.36, 1]
+            }
+        }
+    };
+
     return (
-        <div className="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay={delay}>
-            <div className="shop-box-items style-inner mt-0">
-                <div className="shop-image">
-                    <img src={image} alt={title} />
+        <motion.div
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-40px" }}
+            whileHover={{ y: -8 }}
+            className="group bg-white rounded-2xl border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.01)] hover:shadow-[0_20px_40px_rgba(91,140,81,0.12)] transition-all duration-500 overflow-hidden flex flex-col h-full"
+        >
+            {/* IMAGE SECTION */}
+            <div className="relative w-full aspect-square bg-[#F9FCF8] overflow-hidden z-0">
 
-                    {/* CONDITIONAL RENDERING: Only renders if 'badge' exists */}
-                    {badge && <span className="sale-icon">{badge}</span>}
+                {/* Product Image Layer with Hover Scale */}
+                <img
+                    src={image}
+                    alt={title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    loading="lazy"
+                />
 
-                    {/* CONDITIONAL RENDERING: Only renders if 'discount' exists */}
-                    {discount && <span className="discount-icon">{discount}</span>}
-
-                    <ul className="shop-icon d-flex justify-content-center align-items-center">
-                        {/* <li>
-                            <a href="/cart"><i className="far fa-heart"></i></a>
-                        </li> */}
-                        <li>
-                            <a href="/cart"><i className="far fa-shopping-cart"></i></a>
-                        </li>
-                        <li>
-                            {/* Dynamic linking based on the product ID */}
-                            <a href={`/shop/item?id=${id}`}><i className="far fa-eye"></i></a>
-                        </li>
-                    </ul>
+                {/* Floating Badges Stack */}
+                <div className="absolute top-4 left-4 flex flex-col gap-1.5 z-10 pointer-events-none">
+                    {badge && (
+                        <span className="bg-[#5B8C51] text-white text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-md shadow-sm">
+                            {badge}
+                        </span>
+                    )}
+                    {discount && (
+                        <span className="bg-[#EDDD5E] text-[#0A2803] text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-md shadow-sm">
+                            {discount}
+                        </span>
+                    )}
                 </div>
 
-                <div className="content">
-                    {/* Dynamic Star Rating: Loops to create solid/empty stars based on the rating number */}
-                    <div className="star">
-                        {[...Array(5)].map((_, index) => (
-                            <i key={index} className={index < rating ? "fas fa-star" : "far fa-star"}></i>
-                        ))}
-                    </div>
+                {/* Modern Hover Blur Action Overlay */}
+                <div className="absolute inset-0 bg-[#0A2803]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3 z-20">
 
-                    <h5><a href={`/shop/item?id=${id}`}>{title}</a></h5>
+                    {/* Add to Cart Action */}
+                    <Link href="/cart">
+                        <motion.div
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                            className="w-11 h-11 bg-white hover:bg-[#5B8C51] text-[#0A2803] hover:text-white rounded-xl flex items-center justify-center text-lg transition-colors duration-300 shadow-md cursor-pointer"
+                        >
+                            <FaShoppingCart size={16} />
+                        </motion.div>
+                    </Link>
 
-                    <ul>
-                        <li>GH¢ {price.toFixed(2)}</li>
+                    {/* View Item Details Action */}
+                    <Link href={`/shop/item?id=${id}`}>
+                        <motion.div
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                            className="w-11 h-11 bg-white hover:bg-[#5B8C51] text-[#0A2803] hover:text-white rounded-xl flex items-center justify-center text-lg transition-colors duration-300 shadow-md cursor-pointer"
+                        >
+                            <FaEye size={16} />
+                        </motion.div>
+                    </Link>
 
-                        {/* CONDITIONAL RENDERING: Only shows the slashed price if originalPrice exists */}
-                        {originalPrice && (
-                            <li>
-                                <del>GH¢ {originalPrice.toFixed(2)}</del>
-                            </li>
-                        )}
-                    </ul>
                 </div>
             </div>
-        </div>
+
+            {/* CONTENT BODY SECTION */}
+            <div className="p-5 md:p-6 flex flex-col flex-grow bg-white z-10">
+
+                {/* Product Star Rating Nodes */}
+                <div className="flex items-center gap-1 mb-2.5">
+                    {[...Array(5)].map((_, starIdx) => (
+                        <FaStar
+                            key={starIdx}
+                            className={`text-xs ${starIdx < rating ? "text-[#EDDD5E]" : "text-gray-200"}`}
+                        />
+                    ))}
+                </div>
+
+                {/* Title Text Heading Link */}
+                <h5 className="text-base md:text-lg font-extrabold text-[#0A2803] hover:text-[#5B8C51] transition-colors duration-300 line-clamp-2 mb-3 leading-tight">
+                    <Link href={`/shop/item?id=${id}`}>
+                        {title}
+                    </Link>
+                </h5>
+
+                {/* Price Point Layout Structure */}
+                <div className="mt-auto pt-3 border-t border-gray-50 flex items-baseline gap-2.5">
+                    <span className="text-lg font-black text-[#5B8C51]">
+                        GH¢ {price.toFixed(2)}
+                    </span>
+
+                    {originalPrice && (
+                        <del className="text-xs font-bold text-gray-400">
+                            GH¢ {originalPrice.toFixed(2)}
+                        </del>
+                    )}
+                </div>
+
+            </div>
+        </motion.div>
     );
 }
