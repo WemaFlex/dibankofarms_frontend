@@ -1,25 +1,33 @@
-import BackToTop from "../components/BackToTop";
-import ContactUsOffCanvas from "../components/ContactUsOffCanvas";
-import CustomMouseCursor from "../components/CustomMouseCursor";
-import StickyHeader from "../components/StickyHeader";
+"use client"
+import React from "react";
+// import { FloatButton } from "antd";
 import TopHeader from "../components/TopHeader";
-import FooterSection from "../components/FooterSection";
+import Header from "../components/StickyHeader";
+import Footer from "../components/Footer";
+import { FloatButton } from 'antd';
+import { ArrowUpOutlined } from "@ant-design/icons";
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+
+export default function RootWebsiteLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      {/* <PreLoader /> */}
-      <BackToTop />
-      <CustomMouseCursor />
-      <ContactUsOffCanvas />
+      {/* Native Ant Design Back to Top Button */}
+      <FloatButton.BackTop
+        duration={400}
+        type="primary"
+        shape="square"
+        icon={<ArrowUpOutlined />}
+        style={{ right: 30, bottom: 30 }}
+      />
+
       <TopHeader />
-      <StickyHeader />
-      {children}
-      <FooterSection />
+      <Header />
+
+      <main className="flex-grow overflow-x-hidden" >
+        {children}
+      </main>
+
+      <Footer />
     </>
   );
 }

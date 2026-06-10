@@ -1,12 +1,21 @@
 "use client";
 
+import { useState } from "react";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+    FaChevronDown, FaSeedling, FaShieldAlt, FaTractor,
+    FaTruck, FaTags, FaQuestionCircle, FaArrowRight,
+    FaPhoneAlt, FaEnvelope, FaWhatsapp
+} from "react-icons/fa";
+import { Space } from "antd";
 import Link from "next/link";
 
 const faqData = [
     {
         categoryId: "feeds",
         categoryTitle: "About Our Feeds",
-        icon: "flaticon-wheat",
+        icon: <FaSeedling />,
         questions: [
             { id: "q1", q: "What types of animal feed do you produce?", a: "We produce high-quality feeds for poultry, swine, ruminants (cattle, sheep, goats), and rabbits. Each formulation is tailored for optimal growth and performance." },
             { id: "q2", q: "What makes your feed different?", a: "Our feeds are scientifically formulated, made from quality ingredients, and designed to deliver consistent results. We prioritize performance, safety, and reliability." },
@@ -18,7 +27,7 @@ const faqData = [
     {
         categoryId: "materials",
         categoryTitle: "Raw Materials & Quality",
-        icon: "flaticon-food-safety",
+        icon: <FaShieldAlt />,
         questions: [
             { id: "q6", q: "Where do you source your ingredients?", a: "We source from trusted suppliers locally and internationally to ensure consistent quality and safety." },
             { id: "q7", q: "How do you ensure feed quality?", a: "Through controlled formulation, proper storage, and strict monitoring during production." },
@@ -28,7 +37,7 @@ const faqData = [
     {
         categoryId: "farming",
         categoryTitle: "Farming Operations",
-        icon: "flaticon-farmer",
+        icon: <FaTractor />,
         questions: [
             { id: "q9", q: "What other services do you offer?", a: "We are engaged in mixed farming, hay production, and livestock support services." },
             { id: "q10", q: "Do you supply hay or forage?", a: "Yes, we produce hay to support feeding, especially during dry seasons. (Under Construction - Scaling soon!)" }
@@ -37,7 +46,7 @@ const faqData = [
     {
         categoryId: "orders",
         categoryTitle: "Orders & Delivery",
-        icon: "flaticon-delivery",
+        icon: <FaTruck />,
         questions: [
             { id: "q11", q: "What packaging sizes are available?", a: "Our feeds are available in convenient 15 kg and 25 kg bags." },
             { id: "q12", q: "Do you offer delivery?", a: "Yes, delivery is available depending on your order size and location across Ghana. (Logistics framework expanding soon!)" },
@@ -47,7 +56,7 @@ const faqData = [
     {
         categoryId: "pricing",
         categoryTitle: "Pricing & Support",
-        icon: "flaticon-like",
+        icon: <FaTags />,
         questions: [
             { id: "q14", q: "Are your feeds affordable?", a: "Absolutely. We offer highly competitive pricing while maintaining the premium quality your livestock needs." },
             { id: "q15", q: "Do you provide technical support?", a: "Yes, our team is happy to guide customers on feed selection and proper livestock nutrition strategies." }
@@ -56,7 +65,7 @@ const faqData = [
     {
         categoryId: "general",
         categoryTitle: "General Use",
-        icon: "flaticon-leaf",
+        icon: <FaQuestionCircle />,
         questions: [
             { id: "q16", q: "How should I store the feed?", a: "Store in a cool, dry place raised off the ground (on pallets) to avoid moisture and pest contamination." },
             { id: "q17", q: "Can I mix your feed with others?", a: "It is not recommended without expert guidance, as mixing can disrupt the carefully balanced nutritional profile." },
@@ -66,93 +75,120 @@ const faqData = [
 ];
 
 export default function FaqSection() {
-    return (
-        <section className="faq-section section-padding">
-            <div className="container">
+    // Tracks the currently opened question globally across all sections
+    const [openQuestionId, setOpenQuestionId] = useState<string | null>("q1");
 
-                {/* --- HERO HEADER --- */}
-                <div className="section-title text-center mb-5">
-                    <span className="wow fadeInUp"><img src="/assets/img/sub-title.svg" alt="img" />FAQ</span>
-                    <h2 className="text-anim">Frequently Asked Questions</h2>
-                    <p className="mt-3 mx-auto" style={{ maxWidth: "700px" }}>
+    const toggleQuestion = (id: string) => {
+        setOpenQuestionId(openQuestionId === id ? null : id);
+    };
+
+    return (
+        <section className="py-20 md:py-32 bg-[#F9FCF8] relative overflow-hidden">
+            <div className="container mx-auto px-4 lg:px-8 max-w-[1000px] relative z-10">
+
+                {/* --- HEADER --- */}
+                <div className="text-center mb-16">
+                    <span className="flex items-center justify-center gap-2 text-[#404A3D] font-bold text-xs uppercase tracking-wider mb-3">
+                        <Image src="/assets/img/sub-title.svg" alt="Leaf Icon" width={16} height={16} />
+                        FAQ
+                    </span>
+                    <h2 className="text-4xl md:text-5xl font-black text-[#0A2803] mb-4">
+                        Frequently Asked Questions
+                    </h2>
+                    <p className="text-[#5C6672] text-base font-medium max-w-2xl mx-auto mb-8">
                         Everything you need to know about our feeds, farming services, and how we support your livestock success in Ejura and beyond.
                     </p>
-                    <div className="mt-4 wow fadeInUp" data-wow-delay=".3s">
-                        <Link href="/contact-us" className="theme-btn">
-                            Contact Us <i className="far fa-arrow-right"></i>
-                        </Link>
-                    </div>
+                    <Link href="/contact-us" className="inline-flex items-center gap-2 bg-[#5B8C51] hover:bg-[#0A2803] text-white font-bold px-7 h-12 rounded-full shadow-md transition-all duration-300 hover:-translate-y-0.5 text-sm">
+                        Contact Us <FaArrowRight size={12} />
+                    </Link>
                 </div>
 
-                {/* --- ACCORDION LAYOUT --- */}
-                <div className="row justify-content-center">
-                    <div className="col-lg-10">
-                        {faqData.map((category, catIndex) => (
-                            <div key={category.categoryId} className="mb-5 wow fadeInUp" data-wow-delay={`0.${(catIndex * 2) + 2}s`}>
+                {/* --- ACCORDIONS --- */}
+                <div className="flex flex-col gap-12">
+                    {faqData.map((category) => (
+                        <div key={category.categoryId} className="flex flex-col">
 
-                                {/* Category Header */}
-                                <h3 className="mb-4 pb-2 border-bottom text-success">
-                                    <i className={`${category.icon} me-3`}></i>
-                                    {category.categoryTitle}
-                                </h3>
+                            {/* Category Title Header */}
+                            <div className="flex items-center gap-3 text-xl font-black text-[#0A2803] mb-5 border-b border-gray-200/60 pb-3">
+                                <span className="text-[#5B8C51] text-2xl">{category.icon}</span>
+                                <h3>{category.categoryTitle}</h3>
+                            </div>
 
-                                {/* Bootstrap Accordion */}
-                                <div className="accordion" id={`accordion-${category.categoryId}`}>
-                                    {category.questions.map((item, index) => (
-                                        <div className="accordion-item mb-3 border-0 shadow-sm rounded" key={item.id}>
-                                            <h2 className="accordion-header" id={`heading-${item.id}`}>
-                                                <button
-                                                    className={`accordion-button ${index !== 0 ? 'collapsed' : ''} bg-white rounded fw-bold`}
-                                                    type="button"
-                                                    data-bs-toggle="collapse"
-                                                    data-bs-target={`#collapse-${item.id}`}
-                                                    aria-expanded={index === 0 ? "true" : "false"}
-                                                    aria-controls={`collapse-${item.id}`}
-                                                >
-                                                    {item.q}
-                                                </button>
-                                            </h2>
-                                            <div
-                                                id={`collapse-${item.id}`}
-                                                className={`accordion-collapse collapse ${index === 0 ? 'show' : ''}`}
-                                                aria-labelledby={`heading-${item.id}`}
-                                                data-bs-parent={`#accordion-${category.categoryId}`}
+                            {/* Native Custom Accordion Items */}
+                            <div className="flex flex-col gap-3">
+                                {category.questions.map((item) => {
+                                    const isOpen = openQuestionId === item.id;
+
+                                    return (
+                                        <div
+                                            key={item.id}
+                                            className="bg-white rounded-2xl border border-gray-100 shadow-[0_4px_15px_rgba(0,0,0,0.01)] overflow-hidden transition-all duration-300 hover:shadow-md"
+                                        >
+                                            {/* Accordion Toggle Click Area */}
+                                            <button
+                                                onClick={() => toggleQuestion(item.id)}
+                                                className="w-full text-left px-6 py-5 flex justify-between items-center gap-4 group focus:outline-none"
                                             >
-                                                <div className="accordion-body text-muted pt-0 pb-4 px-4">
-                                                    {item.a}
+                                                <span className={`font-bold text-base md:text-lg transition-colors duration-300 ${isOpen ? "text-[#5B8C51]" : "text-[#0A2803] group-hover:text-[#5B8C51]"}`}>
+                                                    {item.q}
+                                                </span>
+                                                <div className={`w-8 h-8 rounded-full flex items-center justify-center bg-[#F9FCF8] text-[#0A2803] transition-transform duration-300 flex-shrink-0 ${isOpen ? "rotate-180 bg-[#5B8C51] text-white" : ""}`}>
+                                                    <FaChevronDown size={12} />
                                                 </div>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
+                                            </button>
 
+                                            {/* Smoothly Animated Content Window */}
+                                            <AnimatePresence initial={false}>
+                                                {isOpen && (
+                                                    <motion.div
+                                                        initial={{ height: 0, opacity: 0 }}
+                                                        animate={{ height: "auto", opacity: 1 }}
+                                                        exit={{ height: 0, opacity: 0 }}
+                                                        transition={{ duration: 0.25, ease: "easeInOut" }}
+                                                    >
+                                                        <div className="text-[#5C6672] text-sm md:text-base leading-relaxed font-medium pt-0 pb-6 px-6 border-t border-gray-50 mt-1">
+                                                            {item.a}
+                                                        </div>
+                                                    </motion.div>
+                                                )}
+                                            </AnimatePresence>
+                                        </div>
+                                    );
+                                })}
                             </div>
-                        ))}
-                    </div>
+
+                        </div>
+                    ))}
                 </div>
 
-                {/* --- BOTTOM CTA SECTION --- */}
-                <div className="row mt-5 pt-4">
-                    <div className="col-12 text-center wow fadeInUp" data-wow-delay=".8s">
-                        <div className="p-5 bg-light rounded" style={{ borderTop: "5px solid #4CAF50" }}>
-                            <h3 className="mb-2">Still have questions?</h3>
-                            <p className="mb-4">We’re here to help you succeed.</p>
+                {/* --- BOTTOM CINEMATIC CTA BOX --- */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.6 }}
+                    className="relative mt-20 rounded-3xl bg-[#0A2803] p-8 md:p-12 text-center overflow-hidden text-white shadow-xl border-t-4 border-[#EDDD5E]"
+                >
+                    {/* Background Subtle Shape Overlay */}
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(91,140,81,0.2),transparent_50%)]"></div>
 
-                            <div className="d-flex justify-content-center gap-3 flex-wrap">
-                                <Link href="tel:+233244522879" className="theme-btn bg-dark text-white border-0">
-                                    <i className="fas fa-phone-alt me-2"></i> Call Now
-                                </Link>
-                                <Link href="mailto:dibankosalifu@gmail.com" className="theme-btn">
-                                    <i className="fas fa-envelope me-2"></i> Send Email
-                                </Link>
-                                {/* Update this link with your actual WhatsApp link format */}
-                                <Link href="https://wa.me/233244522879" target="_blank" className="theme-btn bg-success border-0 text-white">
-                                    <i className="fab fa-whatsapp me-2"></i> WhatsApp Us
-                                </Link>
-                            </div>
+                    <div className="relative z-10 max-w-xl mx-auto">
+                        <h3 className="text-2xl md:text-3xl font-black mb-2">Still have questions?</h3>
+                        <p className="text-white/70 font-medium mb-8">We’re right here to help you secure the ideal livestock solutions.</p>
+
+                        <div className="flex flex-wrap justify-center gap-4">
+                            <Link href="tel:+233244522879" className="inline-flex items-center justify-center gap-2 px-6 h-12 rounded-full font-bold bg-white/10 hover:bg-white/20 text-white border border-white/20 transition-all duration-300 text-sm">
+                                <FaPhoneAlt size={12} /> Call Now
+                            </Link>
+                            <Link href="mailto:dibankosalifu@gmail.com" className="inline-flex items-center justify-center gap-2 px-6 h-12 rounded-full font-bold bg-[#5B8C51] hover:bg-[#48703f] text-white transition-all duration-300 text-sm">
+                                <FaEnvelope size={12} /> Send Email
+                            </Link>
+                            <a href="https://wa.me/233244522879" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-6 h-12 rounded-full font-bold bg-[#25D366] hover:bg-[#1ebd57] text-white transition-all duration-300 text-sm">
+                                <Space><FaWhatsapp size={16} /> WhatsApp Us</Space>
+                            </a>
                         </div>
                     </div>
-                </div>
+                </motion.div>
 
             </div>
         </section>

@@ -1,3 +1,4 @@
+"use client";
 import BreadCrum from "@/app/components/BreadCrum";
 import CounterSection from "../home/CountSection";
 import ShopSection from "../home/ShopSection";
@@ -14,9 +15,7 @@ export default function AboutUsPage() {
             <CounterSection />
             <ChooseUsSection />
             <ShopSection />
-            {/* <TestimonialSection /> */}
             <OperationsAndStandards />
-            {/* <GallerySection /> */}
             <VideoGallery />
         </>
     )

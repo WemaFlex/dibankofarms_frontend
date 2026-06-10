@@ -1,6 +1,5 @@
-import Layout from "./(website)/layout";
-import HomePage from "./(website)/home/page";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  return (<Layout><HomePage /></Layout>);
+  return redirect('/home');
 }

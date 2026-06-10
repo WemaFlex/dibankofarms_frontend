@@ -1,10 +1,13 @@
-"use client"; // Required for React state
+"use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaPlay, FaLeaf, FaTimes } from "react-icons/fa";
 
 export default function VideoGallery() {
     // React state to handle the popup modal
-    const [activeVideo, setActiveVideo] = useState(null);
+    const [activeVideo, setActiveVideo] = useState<string | null>(null);
 
     // Prevent background scrolling when the video modal is open
     useEffect(() => {
@@ -16,147 +19,147 @@ export default function VideoGallery() {
         return () => { document.body.style.overflow = 'unset'; };
     }, [activeVideo]);
 
-    // 1. Your Video Data Array (8 Videos)
     const videos = [
-        {
-            id: 1,
-            title: "Dibanko Farm Overview",
-            category: "Operations",
-            thumbnail: "/assets/img/home-1/gallery/gallery-01.jpg",
-            videoUrl: "https://youtube.com/embed/6tpWrNuQSwk?autoplay=1"
-        },
-        {
-            id: 4,
-            title: "Maize Harvest Season",
-            category: "Crops",
-            thumbnail: "/assets/img/home-1/gallery/gallery-04.jpg",
-            videoUrl: "https://youtube.com/embed/dYb5WHhqMkE?autoplay=1"
-        },
-        {
-            id: 5,
-            title: "Maize Harvest Season",
-            category: "Crops",
-            thumbnail: "/assets/img/home-1/gallery/gallery-05.jpg",
-            videoUrl: "https://youtube.com/embed/iyXX2FV4KGw?autoplay=1"
-        },
-        {
-            id: 6,
-            title: "Strict Quality Control",
-            category: "Standards",
-            thumbnail: "/assets/img/home-1/gallery/gallery-06.jpg",
-            videoUrl: "https://youtube.com/embed/txT3sub9AdM?autoplay=1"
-        },
-        {
-            id: 8,
-            title: "Strict Quality Control",
-            category: "Standards",
-            thumbnail: "/assets/img/inner-page/shop/shop-details-02.jpg",
-            videoUrl: "https://youtube.com/embed/KE5oAPwbJaE?autoplay=1"
-        },
-        {
-            id: 7,
-            title: "Wholesale Delivery Logistics",
-            category: "Standards",
-            thumbnail: "/assets/img/inner-page/shop/shop-details-01.jpg",
-            videoUrl: "https://youtube.com/embed/JAL6ybPKl-M?autoplay=1"
-        },
-        {
-            id: 2,
-            title: "Strict Quality Control",
-            category: "Standards",
-            thumbnail: "/assets/img/home-1/gallery/gallery-02.jpg",
-            videoUrl: "https://youtube.com/embed/JO5d9K659tg?autoplay=1"
-        },
-        {
-            id: 3,
-            title: "Strict Quality Control",
-            category: "Standards",
-            thumbnail: "/assets/img/home-1/gallery/gallery-03.jpg",
-            videoUrl: "https://youtube.com/embed/DSPu_N_KOq8?autoplay=1"
-        },
+        { id: 1, title: "Dibanko Farm Overview", category: "Operations", thumbnail: "/assets/img/home-1/gallery/gallery-01.jpg", videoUrl: "https://youtube.com/embed/6tpWrNuQSwk?autoplay=1" },
+        { id: 4, title: "Maize Harvest Season", category: "Crops", thumbnail: "/assets/img/home-1/gallery/gallery-04.jpg", videoUrl: "https://youtube.com/embed/dYb5WHhqMkE?autoplay=1" },
+        { id: 5, title: "Maize Harvest Season", category: "Crops", thumbnail: "/assets/img/home-1/gallery/gallery-05.jpg", videoUrl: "https://youtube.com/embed/iyXX2FV4KGw?autoplay=1" },
+        { id: 6, title: "Strict Quality Control", category: "Standards", thumbnail: "/assets/img/home-1/gallery/gallery-06.jpg", videoUrl: "https://youtube.com/embed/txT3sub9AdM?autoplay=1" },
+        { id: 8, title: "Strict Quality Control", category: "Standards", thumbnail: "/assets/img/inner-page/shop/shop-details-02.jpg", videoUrl: "https://youtube.com/embed/KE5oAPwbJaE?autoplay=1" },
+        { id: 7, title: "Wholesale Delivery Logistics", category: "Standards", thumbnail: "/assets/img/inner-page/shop/shop-details-01.jpg", videoUrl: "https://youtube.com/embed/JAL6ybPKl-M?autoplay=1" },
+        { id: 2, title: "Strict Quality Control", category: "Standards", thumbnail: "/assets/img/home-1/gallery/gallery-02.jpg", videoUrl: "https://youtube.com/embed/JO5d9K659tg?autoplay=1" },
+        { id: 3, title: "Strict Quality Control", category: "Standards", thumbnail: "/assets/img/home-1/gallery/gallery-03.jpg", videoUrl: "https://youtube.com/embed/DSPu_N_KOq8?autoplay=1" },
     ];
 
-    return (
-        <section className="video-gallery-section section-padding bg-light">
-            <div className="container">
-                <div className="section-title text-center mb-5">
-                    <span className="wow fadeInUp"><img src="/assets/img/sub-title.svg" alt="img" />Inside Dibanko</span>
-                    <h2 className="text-anim">Our Farm in Motion</h2>
-                    <p className="mt-3">See exactly how we produce the highest quality feed and crops in the Ashanti Region.</p>
-                </div>
+    // Framer motion variants for the staggered grid
+    const cardVariants = {
+        hidden: { opacity: 0, y: 40 },
+        visible: (index: number) => ({
+            opacity: 1,
+            y: 0,
+            transition: {
+                delay: (index % 4) * 0.1, // Staggers row by row (4 items per row on desktop)
+                duration: 0.6,
+                ease: [0.22, 1, 0.36, 1]
+            }
+        })
+    };
 
-                <div className="row g-4">
+    return (
+        <section className="py-20 md:py-28 bg-white">
+            <div className="container mx-auto px-4 lg:px-8 max-w-[1400px]">
+
+                {/* Section Title */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                    className="text-center mb-12 md:mb-16"
+                >
+                    <span className="flex items-center justify-center gap-2 text-[#404A3D] font-bold text-sm uppercase tracking-wider mb-3">
+                        <FaLeaf className="text-[#5B8C51] text-lg" />
+                        Inside Dibanko
+                    </span>
+                    <h2 className="text-4xl md:text-5xl font-black text-[#0A2803] mb-4">
+                        Our Farm in Motion
+                    </h2>
+                    <p className="text-[#5C6672] text-[16px] max-w-2xl mx-auto font-medium">
+                        See exactly how we produce the highest quality feed and crops in the Ashanti Region.
+                    </p>
+                </motion.div>
+
+                {/* Video Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     {videos.map((video, index) => (
-                        <div className="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay={`0.${(index % 4) + 2}s`} key={video.id}>
+                        <motion.div
+                            key={video.id}
+                            custom={index}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: "-50px" }}
+                            variants={cardVariants}
+                        >
                             <div
-                                className="video-card position-relative rounded overflow-hidden shadow-sm"
-                                style={{ cursor: "pointer", height: "250px" }}
+                                className="group relative w-full h-[250px] md:h-[280px] rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer"
                                 onClick={() => setActiveVideo(video.videoUrl)}
                             >
                                 {/* Thumbnail Image */}
-                                <img
+                                <Image
                                     src={video.thumbnail}
                                     alt={video.title}
-                                    className="w-100 h-100 object-fit-cover"
+                                    fill
+                                    className="object-cover transition-transform duration-[800ms] group-hover:scale-110"
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                                 />
 
-                                {/* Dark Overlay & Play Button */}
-                                <div className="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center bg-dark bg-opacity-50 transition-hover">
-                                    <i className="fas fa-play-circle text-white fa-4x mb-2 hover-scale"></i>
+                                {/* Dark Gradient Overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#0A2803]/90 via-[#0A2803]/30 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                                {/* Center Play Button */}
+                                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                    <div className="w-16 h-16 bg-white/20 backdrop-blur-sm group-hover:bg-[#5B8C51] rounded-full flex items-center justify-center text-white text-xl border-2 border-white/50 group-hover:border-[#5B8C51] group-hover:scale-110 transition-all duration-300 shadow-[0_10px_20px_rgba(0,0,0,0.2)]">
+                                        <FaPlay className="ml-1" />
+                                    </div>
                                 </div>
 
-                                {/* Text Label at the bottom */}
-                                <div className="position-absolute bottom-0 start-0 w-100 p-3 bg-gradient-dark text-white">
-                                    <span className="badge bg-success mb-1">{video.category}</span>
-                                    <h6 className="mb-0 text-white">{video.title}</h6>
+                                {/* Bottom Text */}
+                                <div className="absolute bottom-0 left-0 w-full p-5 transform transition-transform duration-500 translate-y-2 group-hover:translate-y-0">
+                                    <span className="inline-block px-3 py-1 bg-[#EDDD5E] text-[#0A2803] text-xs font-bold uppercase tracking-wide rounded-md mb-2 shadow-sm">
+                                        {video.category}
+                                    </span>
+                                    <h6 className="text-white text-lg font-bold leading-tight">
+                                        {video.title}
+                                    </h6>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             </div>
 
-            {/* --- REACT VIDEO MODAL --- */}
-            {/* Only renders if a video is clicked */}
-            {activeVideo && (
-                <div
-                    className="video-modal-overlay d-flex justify-content-center align-items-center"
-                    style={{
-                        position: "fixed",
-                        top: 0,
-                        left: 0,
-                        width: "100vw",
-                        height: "100vh",
-                        backgroundColor: "rgba(0, 0, 0, 0.9)",
-                        zIndex: 999999
-                    }}
-                    onClick={() => setActiveVideo(null)} // Click outside to close
-                >
-                    <div className="video-modal-content position-relative w-100" style={{ maxWidth: "900px", padding: "20px" }}>
+            {/* --- ANIMATED REACT VIDEO MODAL --- */}
+            <AnimatePresence>
+                {activeVideo && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="fixed inset-0 z-[999999] bg-black/95 backdrop-blur-sm flex justify-center items-center p-4 md:p-10"
+                        onClick={() => setActiveVideo(null)} // Click background to close
+                    >
+                        <motion.div
+                            initial={{ scale: 0.95, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.95, opacity: 0 }}
+                            transition={{ duration: 0.3, delay: 0.1 }}
+                            className="relative w-full max-w-5xl bg-black rounded-xl md:rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.8)] border border-white/10"
+                            onClick={(e) => e.stopPropagation()} // Prevent clicks on video from closing modal
+                        >
 
-                        {/* Close Button */}
-                        <button
-                            className="btn btn-close btn-close-white position-absolute top-0 end-0 m-3"
-                            onClick={(e) => {
-                                e.stopPropagation(); // Stop click from triggering the background overlay
-                                setActiveVideo(null);
-                            }}
-                            style={{ width: "30px", height: "30px" }}
-                        ></button>
+                            {/* Close Button */}
+                            <button
+                                className="absolute -top-12 right-0 md:top-4 md:-right-16 text-white/70 hover:text-white transition-colors duration-300 z-50 p-2"
+                                onClick={() => setActiveVideo(null)}
+                                aria-label="Close video"
+                            >
+                                <FaTimes className="text-3xl md:text-4xl" />
+                            </button>
 
-                        {/* Video Player */}
-                        <div className="ratio ratio-16x9 shadow-lg rounded overflow-hidden">
-                            <iframe
-                                src={activeVideo}
-                                title="Video Player"
-                                frameBorder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowFullScreen
-                            ></iframe>
-                        </div>
-                    </div>
-                </div>
-            )}
+                            {/* 16:9 Video Container */}
+                            <div className="relative w-full aspect-video bg-black">
+                                <iframe
+                                    src={activeVideo}
+                                    title="Video Player"
+                                    className="absolute inset-0 w-full h-full"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen
+                                ></iframe>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </section>
     );
 }

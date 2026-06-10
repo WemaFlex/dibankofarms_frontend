@@ -5,7 +5,7 @@ import ContactFormSection from "../contact-us/ContactFormSection";
 export default function FAQsPage() {
     return (
         <>
-            <BreadCrum slug="Our Team" />
+            <BreadCrum slug="FAQs" />
             <FaqsSection />
             <ContactFormSection />
         </>

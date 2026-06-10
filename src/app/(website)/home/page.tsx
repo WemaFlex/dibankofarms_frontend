@@ -10,6 +10,7 @@ import FarmInnovations from "./FarmInvations";
 import VideoGallery from "@/app/components/VideoGallery";
 import FeaturedProjectsSection from "./FeaturedProjects";
 import WhyChooseUsSection from "./WhyChooseUsSection";
+import CounterSection from "./CountSection";
 
 export default function Home() {
     return (
@@ -18,7 +19,7 @@ export default function Home() {
             <AboutSection />
             <WhatWeDoSection />
             <FeaturedProjectsSection />
-            {/* <CounterSection />npm run */}
+            <CounterSection />
             <ProductsSection />
             <WhyChooseUsSection />
             <ContactSection />
