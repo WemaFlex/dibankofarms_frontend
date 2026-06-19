@@ -54,7 +54,7 @@ export default function StorefrontAuthLayout({ children }: { children: React.Rea
         setMounted(true);
         // Redirect authenticated users to the shop/dashboard
         if (!loading && user) {
-            router.replace("/shop");
+            router.replace("/customer/shop");
         }
     }, [user, loading, router]);
 

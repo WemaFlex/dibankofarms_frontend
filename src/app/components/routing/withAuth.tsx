@@ -40,13 +40,13 @@ export default function withAuth(
 
         // If the page is ONLY for clients, kick out admins/staff
         if (options?.requireResident && !isResident) {
-          router.replace('/dashboard/finance'); // Send staff to their main dashboard
+          router.replace('/admin/dashboard'); // Send staff to their main dashboard
           return;
         }
 
         // If the page is ONLY for staff, kick out residents
         if (options?.blockResident && isResident) {
-          router.replace('/resident/dashboard');
+          router.replace('/customer/products');
           return;
         }
       }
