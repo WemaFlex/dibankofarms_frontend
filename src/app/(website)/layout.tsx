@@ -11,7 +11,6 @@ import { ArrowUpOutlined } from "@ant-design/icons";
 export default function RootWebsiteLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      {/* Native Ant Design Back to Top Button */}
       <FloatButton.BackTop
         duration={400}
         type="primary"
@@ -23,9 +22,9 @@ export default function RootWebsiteLayout({ children }: { children: React.ReactN
       <TopHeader />
       <Header />
 
-      <main className="flex-grow overflow-x-hidden" >
+   
         {children}
-      </main>
+   
 
       <Footer />
     </>

@@ -1,23 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import { Nunito } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
 const nunito = Nunito({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800", "900"],
   variable: "--font-nunito"
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -31,10 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${nunito.variable} h-full antialiased`}
-    >
+    <html lang="en" className={`${nunito.variable} h-full antialiased`} >
       <head>
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -46,11 +32,13 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
       </head>
 
-      <body className={`${nunito.variable} antialiased text-[#5C6672] bg-white flex flex-col min-h-screen`}>
-        <Providers>
-          {children}
-        </Providers>
-      </body>
+      <Providers>
+        <body className={`${nunito.variable} antialiased text-[#5C6672] bg-white flex flex-col min-h-screen`}>
+          <main className="grow overflow-x-hidden" >
+            {children}
+          </main>
+        </body>
+      </Providers>
     </html>
   );
 }
