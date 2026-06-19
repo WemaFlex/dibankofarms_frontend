@@ -152,6 +152,7 @@ export default function StorefrontAuthLayout({ children }: { children: React.Rea
                     </div>
                     <p className="text-xs text-[#5C6672]/70 font-semibold">
                         © {new Date().getFullYear()} Dibanko Farms. All rights reserved.
+                        {/* todo: add developed by wemaflex link */}
                     </p>
                 </div>
             </div>
