@@ -141,7 +141,7 @@ export default function ShopSection() {
                                                     <Link href="#" className="w-[45px] h-[45px] sm:w-[50px] sm:h-[50px] !bg-white rounded-full flex items-center justify-center text-[#333333] text-xl shadow-[0_10px_20px_rgba(0,0,0,0.15)] hover:!bg-[#5B8C51] hover:text-white transition-colors duration-300">
                                                         <FiHeart />
                                                     </Link>
-                                                    <Link href="/contact" className="w-[45px] h-[45px] sm:w-[50px] sm:h-[50px] !bg-white rounded-full flex items-center justify-center text-[#333333] text-xl shadow-[0_10px_20px_rgba(0,0,0,0.15)] hover:!bg-[#5B8C51] hover:text-white transition-colors duration-300 mt-4">
+                                                    <Link href="/shop" className="w-[45px] h-[45px] sm:w-[50px] sm:h-[50px] !bg-white rounded-full flex items-center justify-center text-[#333333] text-xl shadow-[0_10px_20px_rgba(0,0,0,0.15)] hover:!bg-[#5B8C51] hover:text-white transition-colors duration-300 mt-4">
                                                         <FiShoppingCart />
                                                     </Link>
                                                     <Link href="/shop" className="w-[45px] h-[45px] sm:w-[50px] sm:h-[50px] !bg-white rounded-full flex items-center justify-center text-[#333333] text-xl shadow-[0_10px_20px_rgba(0,0,0,0.15)] hover:!bg-[#5B8C51] hover:text-white transition-colors duration-300">

@@ -52,7 +52,7 @@ export default function ChooseUsSection() {
                             className="absolute top-0 left-0 w-[85%] h-[80%] rounded-3xl overflow-hidden shadow-xl"
                         >
                             <Image
-                                src="/assets/img/home-1/choose/choose-01.jpg"
+                                src="/dsfassets/LivestockFeedProductSectionImg1.jpeg"
                                 alt="Dibanko Salifu Farms Fields"
                                 fill
                                 className="object-cover"
@@ -69,7 +69,7 @@ export default function ChooseUsSection() {
                             className="absolute bottom-0 right-0 w-[55%] h-[55%] rounded-3xl overflow-hidden shadow-2xl border-[8px] border-white z-20"
                         >
                             <Image
-                                src="/assets/img/home-1/choose/choose-02.jpg"
+                                src="/dsfassets/Farm2.png"
                                 alt="Farm Products"
                                 fill
                                 className="object-cover"

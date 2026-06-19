@@ -3,14 +3,13 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Tabs, Button, ConfigProvider } from "antd";
-import { ArrowRightOutlined } from "@ant-design/icons";
+import { Tabs, ConfigProvider } from "antd";
 import { FaLeaf, FaTractor, FaIndustry, FaWarehouse, FaWater } from "react-icons/fa";
 
 const projectData = [
-    { key: "1", label: "Ginger Farm", title: "Ejura Ginger Farm Development", description: "We are developing a large-scale, sustainable ginger farm in Ejura. Focused on high-yield, organic cultivation methods, this project is designed to supply fresh and dried ginger for local processing, retail markets, and future international export.", image: "/images/ginger-farming.jpg", icon: <FaLeaf /> },
-    { key: "2", label: "Maize Production", title: "Maize Production & Storage", description: "Cultivating premium white maize backed by advanced, moisture-controlled storage facilities. This critical project ensures a year-round supply of high-quality grains for human consumption and serves as the primary raw material for our livestock feed production.", image: "/images/maize-farming.jpg", icon: <FaTractor /> },
-    { key: "3", label: "Pellet Factory", title: "Livestock Feed Pellet Factory", description: "Operating a state-of-the-art milling and pelletizing facility. This factory allows us to compress raw ingredients into scientifically formulated, nutrient-dense feed pellets tailored for poultry, swine, ruminants, and rabbits with maximum digestibility and zero waste.", image: "/images/animal-feed-2.jpeg", icon: <FaIndustry /> },
+    { key: "1", label: "Ginger Farm", title: "Ejura Ginger Farm Development", description: "We are developing a large-scale, sustainable ginger farm in Ejura. Focused on high-yield, organic cultivation methods, this project is designed to supply fresh and dried ginger for local processing, retail markets, and future international export.", image: "/dsfassets/GingerInSprout.jpeg", icon: <FaLeaf /> },
+    { key: "2", label: "Maize Production", title: "Maize Production & Storage", description: "Cultivating premium white maize backed by advanced, moisture-controlled storage facilities. This critical project ensures a year-round supply of high-quality grains for human consumption and serves as the primary raw material for our livestock feed production.", image: "/dsfassets/CropFarming2.png", icon: <FaTractor /> },
+    { key: "3", label: "Pellet Factory", title: "Livestock Feed Pellet Factory", description: "Operating a state-of-the-art milling and pelletizing facility. This factory allows us to compress raw ingredients into scientifically formulated, nutrient-dense feed pellets tailored for poultry, swine, ruminants, and rabbits with maximum digestibility and zero waste.", image: "/dsfassets/FactoryImage.jpeg", icon: <FaIndustry /> },
     { key: "4", label: "Feed Distribution", title: "Warehouse & Bagged Distribution", description: "Establishing a robust logistics network and dedicated warehousing infrastructure. This project enables the safe, moisture-free storage and efficient distribution of our 15kg and 25kg bags of fortified feed to farmers across the Ashanti Region and beyond.", image: "/images/logistics.png", icon: <FaWarehouse /> },
     { key: "5", label: "Irrigation Farming", title: "Irrigation-Supported Agriculture", description: "Implementing modern, efficient irrigation systems across our fields to overcome seasonal dry spells. This technology ensures the consistent, year-round cultivation of high-value crops, securing our supply chain against unpredictable climate patterns.", image: "/images/irigation-farming.jpg", icon: <FaWater /> },
 ];
@@ -143,11 +142,11 @@ export default function FeaturedProjectsSection() {
                                                 <p className="text-[#5C6672] text-[17px] font-medium leading-relaxed mb-8">
                                                     {project.description}
                                                 </p>
-                                                <Link href="/projects">
+                                                {/* <Link href="/projects">
                                                     <Button type="primary" size="large" className="bg-[#5B8C51] hover:!bg-[#0A2803] hover:!scale-105 transition-all duration-300 border-none px-8 h-14 rounded-full text-base flex items-center gap-2 font-bold shadow-lg shadow-[#5B8C51]/30">
                                                         View Project <ArrowRightOutlined />
                                                     </Button>
-                                                </Link>
+                                                </Link> */}
                                             </div>
                                         </div>
 

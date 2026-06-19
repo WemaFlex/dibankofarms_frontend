@@ -5,7 +5,8 @@ import ShopSection from "../home/ShopSection";
 import OurStorySection from "./OurStorySection";
 import ChooseUsSection from "../home/ChooseUsSection";
 import OperationsAndStandards from "./OperationsAndStadards";
-import VideoGallery from "@/app/components/VideoGallery";
+import VideoGallery from "../gallery/VideoGallery";
+
 
 export default function AboutUsPage() {
     return (

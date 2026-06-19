@@ -2,19 +2,18 @@
 
 import Image from "next/image";
 import { Card, Typography } from "antd";
-import { ArrowRightOutlined } from "@ant-design/icons";
 import { FaSeedling, FaPaw, FaCogs, FaBoxes, FaHandsHelping, FaGlobeAfrica, FaLeaf } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 const { Title, Paragraph } = Typography;
 
 const servicesData = [
-    { id: 1, title: "Crop Farming", description: "Cultivation of high-value crops including maize, ginger, cassava, and seasonal vegetables using modern irrigation.", image: "/assets/img/home-1/about/about-01.jpg", icon: <FaSeedling /> },
-    { id: 2, title: "Livestock Feed Production", description: "Formulating nutrient-dense, high-quality feed solutions tailored for poultry, ruminants, pigs, and rabbits.", image: "/assets/img/home-1/about/about-01.jpg", icon: <FaPaw /> },
-    { id: 3, title: "Feed Pellet Manufacturing", description: "Operating advanced milling systems to compress raw ingredients into highly digestible, low-waste feed pellets.", image: "/assets/img/home-1/about/about-01.jpg", icon: <FaCogs /> },
-    { id: 4, title: "Raw Material Sourcing", description: "Ethically sourcing and processing high-quality agricultural raw materials to maintain a reliable supply chain.", image: "/assets/img/home-1/about/about-01.jpg", icon: <FaBoxes /> },
-    { id: 5, title: "Farmer Support", description: "Providing expert agricultural consulting, technical support, and partnership opportunities for local farmers.", image: "/assets/img/home-1/about/about-01.jpg", icon: <FaHandsHelping /> },
-    { id: 6, title: "Export-Ready Processing", description: "Building the infrastructure for future export-ready crop processing to put Ghanaian agriculture on the global map.", image: "/assets/img/home-1/about/about-01.jpg", icon: <FaGlobeAfrica /> },
+    { id: 1, title: "Crop Farming", description: "Cultivation of high-value crops including maize, ginger, cassava, and seasonal vegetables using modern irrigation.", image: "/dsfassets/CropFarming3.png", icon: <FaSeedling /> },
+    { id: 2, title: "Livestock Feed Production", description: "Formulating nutrient-dense, high-quality feed solutions tailored for poultry, ruminants, pigs, and rabbits.", image: "/dsfassets/JuncaoGrass.jpeg", icon: <FaPaw /> },
+    { id: 3, title: "Feed Pellet Manufacturing", description: "Operating advanced milling systems to compress raw ingredients into highly digestible, low-waste feed pellets.", image: "/dsfassets/LivestockFeedProductSectionImg1.jpeg", icon: <FaCogs /> },
+    { id: 4, title: "Raw Material Sourcing", description: "Ethically sourcing and processing high-quality agricultural raw materials to maintain a reliable supply chain.", image: "/dsfassets/Farm1.png", icon: <FaBoxes /> },
+    { id: 5, title: "Farmer Support", description: "Providing expert agricultural consulting, technical support, and partnership opportunities for local farmers.", image: "/dsfassets/Generalimg3.jpeg", icon: <FaHandsHelping /> },
+    { id: 6, title: "Export-Ready Processing", description: "Building the infrastructure for future export-ready crop processing to put Ghanaian agriculture on the global map.", image: "/dsfassets/FactoryImage.jpeg", icon: <FaGlobeAfrica /> },
 ];
 
 export default function WhatWeDoSection() {
@@ -93,12 +92,12 @@ export default function WhatWeDoSection() {
                                         {service.description}
                                     </Paragraph>
 
-                                    <div className="mt-6 flex items-center gap-2 text-[#0A2803] font-bold text-sm">
+                                    {/* <div className="mt-6 flex items-center gap-2 text-[#0A2803] font-bold text-sm">
                                         Learn More
                                         <div className="w-6 h-6 rounded-full bg-[#EDF2EC] flex items-center justify-center group-hover:bg-[#5B8C51] group-hover:text-white transition-colors duration-300">
                                             <ArrowRightOutlined className="text-xs" />
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </Card>
                         </motion.div>

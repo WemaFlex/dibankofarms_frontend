@@ -45,7 +45,7 @@ export default function Header() {
 
                 {/* Desktop Logo - Locked to the Left */}
                 <Link href="/" className="lg:flex hidden items-center">
-                    <Image src="/assets/img/logo/black-logo.svg" alt="Dibanko Farms" height={120} width={120} />
+                    <Image src="/assets/img/logo/black-logo.svg" alt="Dibanko Farms" height={80} width={80} />
                 </Link>
 
                 {/* Desktop Navigation - Perfectly Centered on Desktop Screens */}

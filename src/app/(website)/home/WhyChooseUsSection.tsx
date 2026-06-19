@@ -71,7 +71,7 @@ export default function ChooseUsSection() {
 
                         <div className="absolute top-0 left-0 w-[80%] h-[80%] rounded-[32px] overflow-hidden shadow-2xl z-10">
                             <Image
-                                src="/assets/img/home-1/choose/choose-01.jpg"
+                                src="/dsfassets/Farm2.png"
                                 alt="Dibanko Salifu Farming"
                                 fill
                                 className="object-cover"
@@ -81,7 +81,7 @@ export default function ChooseUsSection() {
 
                         <div className="absolute bottom-0 right-0 w-[55%] h-[55%] rounded-[32px] overflow-hidden shadow-2xl border-[10px] border-[#EDF2EC] z-20">
                             <Image
-                                src="/assets/img/home-1/choose/choose-02.jpg"
+                                src="/dsfassets/Generalimg1.jpeg"
                                 alt="Quality Feed Production"
                                 fill
                                 className="object-cover"

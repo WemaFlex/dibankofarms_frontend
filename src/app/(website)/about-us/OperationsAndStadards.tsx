@@ -155,7 +155,7 @@ export default function OperationsAndStandards() {
                         className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl"
                     >
                         <Image
-                            src="/assets/img/home-1/about/about-01.jpg"
+                            src="/dsfassets/Livestock2.jpeg"
                             alt="Dibanko Quality Standards"
                             fill
                             className="object-cover hover:scale-105 transition-transform duration-700"

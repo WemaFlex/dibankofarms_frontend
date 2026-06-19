@@ -36,7 +36,7 @@ export default function OurStorySection() {
                             className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl"
                         >
                             <Image
-                                src="/assets/img/home-3/choose-us/choose-01.jpg"
+                                src="/dsfassets/CropFarming1.png"
                                 alt="Dibanko Salifu Farms in Ejura"
                                 fill
                                 className="object-cover"

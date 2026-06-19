@@ -111,7 +111,7 @@ export default function AboutUsSection() {
                         {/* Farm Image */}
                         <div className={`relative z-0 w-full h-[350px] rounded-2xl overflow-hidden shadow-2xl transition-all duration-1000 delay-200 transform ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
                             <Image
-                                src="/assets/img/home-1/about/about-01.jpg"
+                                src="/dsfassets/GingerInSprout.jpeg"
                                 alt="Dibanko Salifu Farm"
                                 fill
                                 className="object-cover"

@@ -154,7 +154,7 @@ export default function ContactSection() {
                     <div className={`transition-all duration-1000 delay-300 transform ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-16"}`}>
                         <div className="relative w-full h-[500px] lg:h-[750px] rounded-[32px] overflow-hidden shadow-2xl group">
                             <Image
-                                src="/images/crop-holding.jpg"
+                                src="/dsfassets/Generalimg2.jpeg"
                                 alt="Farmer Holding Crops"
                                 fill
                                 className="object-cover transition-transform duration-1000 group-hover:scale-105"

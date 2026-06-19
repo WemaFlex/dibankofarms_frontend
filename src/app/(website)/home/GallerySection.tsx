@@ -3,15 +3,18 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { FaLeaf, FaArrowRight } from "react-icons/fa";
+import { FaLeaf } from "react-icons/fa";
 
 const galleryData = [
-    { id: 1, category: "Livestock", title: "Healthy Goat Herds", image: "/assets/img/home-1/gallery/gallery-01.jpg", link: "/gallery" },
-    { id: 2, category: "Crops", title: "Fresh Maize Harvest", image: "/assets/img/home-1/gallery/gallery-02.jpg", link: "/gallery" },
-    { id: 3, category: "Animal Feed", title: "Premium Feed Pellets", image: "/assets/img/home-1/gallery/gallery-03.jpg", link: "/gallery" },
-    { id: 4, category: "Crops", title: "Sustainable Bean Farming", image: "/assets/img/home-1/gallery/gallery-04.jpg", link: "/gallery" },
-    { id: 5, category: "Operations", title: "Ejura Farm Facilities", image: "/assets/img/home-1/gallery/gallery-05.jpg", link: "/gallery" },
-    { id: 6, category: "Livestock", title: "Ethical Breeding", image: "/assets/img/home-1/gallery/gallery-06.jpg", link: "/gallery" },
+    { id: 1, category: "Livestock", title: "Healthy Chikect", image: "/dsfassets/images/livestock/LivestockImg1.jpeg", link: "/gallery" },
+    { id: 2, category: "Livestock", title: "Healthy Goat Herds", image: "/dsfassets/images/livestock/LivestockImg3.jpeg", link: "/gallery" },
+    { id: 3, category: "Livestock", title: "Healthy Goat Herds", image: "/dsfassets/images/livestock/LivestockImg6.jpeg", link: "/gallery" },
+    { id: 4, category: "Livestock", title: "Healthy Goat Herds", image: "/dsfassets/images/livestock/LivestockImg7.jpeg", link: "/gallery" },
+    { id: 5, category: "Livestock", title: "Healthy Goat Herds", image: "/dsfassets/images/livestock/LivestockImg12.jpeg", link: "/gallery" },
+    { id: 6, category: "Livestock", title: "Healthy Goat Herds", image: "/dsfassets/images/livestock/LivestockImg15.jpeg", link: "/gallery" },
+    { id: 7, category: "Crops", title: "Fresh Maize Harvest", image: "/dsfassets/GingerInSprout.jpeg", link: "/gallery" },
+    { id: 8, category: "Crops", title: "Fresh Maize Harvest", image: "/dsfassets/CropFarming2.png", link: "/gallery" },
+    { id: 9, category: "Animal Feed", title: "Premium Feed Pellets", image: "/dsfassets/JuncaoGrass.jpeg", link: "/gallery" },
 ];
 
 export default function GallerySection() {
@@ -89,14 +92,14 @@ export default function GallerySection() {
                                             {item.category}
                                         </p>
                                         <div className="flex items-end justify-between gap-4">
-                                            <h3 className="text-white text-2xl md:text-3xl font-extrabold leading-tight">
+                                            {/* <h3 className="text-white text-2xl md:text-3xl font-extrabold leading-tight">
                                                 {item.title}
-                                            </h3>
+                                            </h3> */}
 
                                             {/* Hover Arrow Icon */}
-                                            <div className="w-12 h-12 rounded-full bg-[#5B8C51] text-white flex items-center justify-center flex-shrink-0 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 delay-100">
+                                            {/* <div className="w-12 h-12 rounded-full bg-[#5B8C51] text-white flex items-center justify-center flex-shrink-0 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 delay-100">
                                                 <FaArrowRight className="-rotate-45 group-hover:rotate-0 transition-transform duration-500" />
-                                            </div>
+                                            </div> */}
                                         </div>
                                     </div>
 
